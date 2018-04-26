@@ -50,6 +50,15 @@ var orm = {
       cb(result);
     });
   },
+  selectWhere: function(tableInput, col, condition, cb) {
+    var queryString = `SELECT * FROM ${tableInput} WHERE ${col}=${condition};`;
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
   insertOne: function(table, col, val, cb) {
     var queryString = 'INSERT INTO ' + table;
 
