@@ -1,0 +1,15 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "Stupid burger eating app",
+  "main": "server.js",
+  "repository": "https://github.com/madhavparekh/burger.git",
+  "author": "madhavparekh <madhavparekh@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.15.0"
+  }
+}
