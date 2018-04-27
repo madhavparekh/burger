@@ -59,17 +59,19 @@ var orm = {
       cb(result);
     });
   },
-  insertOne: function(table, col, val, cb) {
+  insertOne: function(table, cols, vals, cb) {
     var queryString = 'INSERT INTO ' + table;
 
     queryString += ' (';
-    queryString += col;
+    queryString += cols.toString();
     queryString += ') ';
-    queryString += 'VALUE (?) ';
+    queryString += `VALUES (${vals.map((e) => {
+      return '?';
+    })}) `;
 
     console.log(queryString);
 
-    connection.query(queryString, val, function(err, result) {
+    connection.query(queryString, vals, function(err, result) {
       if (err) {
         throw err;
       }
