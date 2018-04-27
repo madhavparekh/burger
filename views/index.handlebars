@@ -18,8 +18,7 @@
                         <div class="carousel-item {{#unless @index}}active{{/unless}}">
                             <img class="d-block w-100" src="{{picurl}}" alt="{{burger_name}}">
                             <div class="text-center bg-light p-2">
-                                <h6>{{burger_name}}</h6>
-                                <button type="button" class="btn btn-dark">Devour</button>
+                                <h4>{{burger_name}}</h4>
                             </div>
                         </div>
                         {{/each}}
@@ -33,6 +32,16 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+                <div class="container my-5">
+                    {{#each avail_burgers}}
+                    <div class="card text-center my-2 p-auto bg-light" style="width: 100%">
+                        <div class="card-body">
+                            <h5 class="card-title">{{burger_name}}</h5>
+                            <button type="button" data-id={{id}} data-devoured={{devoured}} class="btn btn-dark">Devour</button>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
 
             </div>
             <div class="col-5">
@@ -42,8 +51,7 @@
                         <div class="carousel-item {{#unless @index}}active{{/unless}}">
                             <img class="d-block w-100" src="{{picurl}}" alt="{{burger_name}}">
                             <div class="text-center bg-light p-2">
-                                <h6>{{burger_name}}</h6>
-                                <button type="button" class="btn btn-dark">Re-Order</button>
+                                <h4>{{burger_name}}</h4>
                             </div>
                         </div>
                         {{/each}}
@@ -56,6 +64,16 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
+                </div>
+                <div class="container my-5">
+                    {{#each consumed_burgers}}
+                    <div class="card text-center my-2 p-auto bg-light" style="width: 100%">
+                        <div class="card-body">
+                            <h5 class="card-title">{{burger_name}}</h5>
+                            <button type="button" data-id={{id}} data-devoured={{devoured}} class="btn btn-dark">Devour</button>
+                        </div>
+                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
@@ -70,3 +88,4 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+<script src="/assets/js/frontEnd.js"></script>
