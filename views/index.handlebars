@@ -1,14 +1,65 @@
 <div>
     <div class="jumbotron text-center w-75 m-auto p-0">
         <h1 class="display-3">Welcome to Eat Da Burger Joint</h1>
-        <p class="lead">Creat your Own burger or Devour one of ours </p>
-        {{!--
+        <p class="lead">Craft your Own burger or Devour one of our Signature burgers</p>
         <hr class="my-2">
         <p class="lead p-3">
-            <a class="btn btn-primary btn-lg" href="/survey" role="button">Take Survey</a>
-        </p> --}}
+            <a class="btn btn-primary btn-lg m-2" href="/create" role="button">Craft your own Burger</a>
+        </p>
+
     </div>
 
+    <div class="w-75 m-auto">
+        <div class="row justify-content-center">
+            <div class="col-5">
+                <div id="availBurgers" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {{#each avail_burgers}}
+                        <div class="carousel-item {{#unless @index}}active{{/unless}}">
+                            <img class="d-block w-100" src="{{picurl}}" alt="{{burger_name}}">
+                            <div class="text-center bg-light p-2">
+                                <h6>{{burger_name}}</h6>
+                                <button type="button" class="btn btn-dark">Devour</button>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                    <a class="carousel-control-prev" href="#availBurgers" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#availBurgers" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-5">
+                <div id="devouredBurger" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {{#each consumed_burgers}}
+                        <div class="carousel-item {{#unless @index}}active{{/unless}}">
+                            <img class="d-block w-100" src="{{picurl}}" alt="{{burger_name}}">
+                            <div class="text-center bg-light p-2">
+                                <h6>{{burger_name}}</h6>
+                                <button type="button" class="btn btn-dark">Re-Order</button>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                    <a class="carousel-control-prev" href="#devouredBurger" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#devouredBurger" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container text-center p-5">
         <a href="/api/burgers" class="badge badge-dark">API</a>
     </div>
