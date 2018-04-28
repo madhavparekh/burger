@@ -9,7 +9,8 @@ $(function() {
       type: 'PUT',
       data: { id, devoured },
     }).then(function() {
-      //location.reload();
+      location.reload();
+      if (devoured) $('#devouredModal').modal('show');
     });
   });
 });
