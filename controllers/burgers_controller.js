@@ -34,7 +34,6 @@ router.post('/create', (req, res) => {
     [name, url],
     [req.body.burger_name, req.body.picurl],
     (data) => {
-      console.log(data);
       res.redirect('/');
     }
   );
@@ -42,10 +41,7 @@ router.post('/create', (req, res) => {
 });
 
 router.put('/api', (req, res) => {
-  console.log(req.body);
   var condition = `id = ${req.body.id}`;
-  console.log('\n\n', condition);
-
   orm.updateOne(table, { devoured: req.body.devoured }, condition, (data) => {
     res.send();
   });
