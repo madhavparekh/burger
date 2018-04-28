@@ -4,11 +4,9 @@
         <p class="lead">Craft your Own burger or Devour one of our Signature burgers</p>
         <hr class="my-2">
         <p class="lead p-3">
-            <a class="btn btn-primary btn-lg m-2" href="/create" role="button">Craft your own Burger</a>
+            <a class="btn btn-primary btn-lg m-2" data-toggle="modal" data-target="#createModal" role="button">Craft your own Burger</a>
         </p>
-
     </div>
-
     <div class="w-75 m-auto">
         <div class="row justify-content-center">
             <div class="col-5">
@@ -16,7 +14,7 @@
                     <div class="carousel-inner">
                         {{#each avail_burgers}}
                         <div class="carousel-item {{#unless @index}}active{{/unless}}">
-                            <img class="d-block w-100" src="{{picurl}}" alt="{{burger_name}}">
+                            <img class="d-block w-100" src="{{picurl}}" alt="{{burger_name}}" width="300" height="400">
                             <div class="text-center bg-light p-2">
                                 <h4>{{burger_name}}</h4>
                             </div>
@@ -37,7 +35,7 @@
                     <div class="card text-center my-2 p-auto bg-light" style="width: 100%">
                         <div class="card-body">
                             <h5 class="card-title">{{burger_name}}</h5>
-                            <button type="button" data-id={{id}} data-devoured={{devoured}} class="btn btn-dark">Devour</button>
+                            <button type="button" data-id={{id}} data-devoured={{devoured}} class="btn btn-dark devour">Devour</button>
                         </div>
                     </div>
                     {{/each}}
@@ -49,7 +47,7 @@
                     <div class="carousel-inner">
                         {{#each consumed_burgers}}
                         <div class="carousel-item {{#unless @index}}active{{/unless}}">
-                            <img class="d-block w-100" src="{{picurl}}" alt="{{burger_name}}">
+                            <img class="d-block w-100" src="{{picurl}}" alt="{{burger_name}}" width="300" height="400">
                             <div class="text-center bg-light p-2">
                                 <h4>{{burger_name}}</h4>
                             </div>
@@ -70,7 +68,7 @@
                     <div class="card text-center my-2 p-auto bg-light" style="width: 100%">
                         <div class="card-body">
                             <h5 class="card-title">{{burger_name}}</h5>
-                            <button type="button" data-id={{id}} data-devoured={{devoured}} class="btn btn-dark">Devour</button>
+                            <button type="button" data-id={{id}} data-devoured={{devoured}} class="btn btn-dark devour">Re Craft</button>
                         </div>
                     </div>
                     {{/each}}
@@ -78,8 +76,36 @@
             </div>
         </div>
     </div>
-    <div class="container text-center p-5">
-        <a href="/api/burgers" class="badge badge-dark">API</a>
+    <!-- create Modal -->
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createModalLabel">Craft Here</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="/create" method="POST" class="form-group">
+                    <div class="row justify-content-center align-items-end">
+                        <div class="col-6">
+                            <label for="name">Name your burger</label>
+                            <input type="text" class="form-control" name="burger_name" aria-describedby="helpId" placeholder="California ABLT Burger"
+                                minlength="4" required>
+                            <label for="url">URL to your burger's picture</label>
+                            <input type="url" class="form-control" name="picurl" aria-describedby="helpId" placeholder="http://www.xyz.com/burger.jpg"
+                                minlength="10" maxlength="500" required>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-large btn-dark" type="submit">CREATE</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
