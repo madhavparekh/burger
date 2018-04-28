@@ -1,6 +1,6 @@
 $(function() {
   console.log('loaded');
-  $('button').on('click', (e) => {
+  $('.devour').on('click', (e) => {
     var id = $(e.target).data('id');
     var devoured = $(e.target).data('devoured') ? 0 : 1;
 
