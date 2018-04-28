@@ -8,11 +8,13 @@ var table = 'burgers';
 var name = 'burger_name';
 var url = 'picurl';
 var devouvred = 'devoured';
+var devouredFlag = false;
 
 var router = express.Router();
 
 router.get('/', (req, res) => {
   var avail = {};
+  avail.devouredFlag = devouredFlag;
 
   orm.selectWhere(table, devouvred, false, (data) => {
     avail.avail_burgers = data;
@@ -43,7 +45,9 @@ router.post('/create', (req, res) => {
 router.put('/api', (req, res) => {
   var condition = `id = ${req.body.id}`;
   orm.updateOne(table, { devoured: req.body.devoured }, condition, (data) => {
-    res.send();
+    devouredFlag = req.body.id ? true : false;
+
+    res.redirect('/');
   });
 });
 
