@@ -9,10 +9,18 @@ $(function() {
       type: 'PUT',
       data: { id, devoured },
     }).then(function() {
+      if (devoured) {
+        $('#devouredModalLabel').text('You gobbled that one pretty fast!');
+        $('#devouredModal').modal('show');
+      } else {
+        $('#devouredModalLabel').text(
+          'Good choice! Your burger is ready to be devoured'
+        );
+        $('#devouredModal').modal('show');
+      }
       setTimeout(() => {
-        if (devoured) $('#devouredModal').modal('show');
-      }, 1500);
-      location.reload(true);
+        location.reload(true);
+      }, 2000);
     });
   });
 });
