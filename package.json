@@ -13,9 +13,5 @@
     "express-handlebars": "^3.0.0",
     "mysql": "^2.15.0",
     "path": "^0.12.7"
-  },
-  "scripts": {
-    "watch": "nodemon server.js",
-    "start": "server.js"
   }
 }
