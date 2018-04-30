@@ -9,8 +9,10 @@ $(function() {
       type: 'PUT',
       data: { id, devoured },
     }).then(function() {
-      location.reload();
-      if (devoured) $('#devouredModal').modal('show');
+      setTimeout(() => {
+        if (devoured) $('#devouredModal').modal('show');
+      }, 1500);
+      location.reload(true);
     });
   });
 });
